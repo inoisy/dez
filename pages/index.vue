@@ -26,12 +26,21 @@
           <v-col cols="12" md="4">
             <div :class="$style.aboutWrapper">
               <div :class="$style.aboutImageWrapper">
-                <v-img :class="$style.aboutImage" class="hidden-lg-and-up" :aspect-ratio="14/9" src="/hero1.jpg" />
-                <v-img :class="$style.aboutImage" class="hidden-md-and-down" max-height="240px" src="/hero1.jpg" />
+                <v-img :class="$style.aboutImage" src="/hero1.jpg" alt="Дезинсектор" :aspect-ratio="14/9" />
+                <!--isMobile <img :class="$style.aboutImage" src="/hero1.jpg" alt="Дезинсектор"> -->
+                <!-- <v-img :class="$style.aboutImage" class="hidden-lg-and-up" :aspect-ratio="14/9" src="/hero1.jpg" />
+                <v-img :class="$style.aboutImage" class="hidden-md-and-down" max-height="240px" src="/hero1.jpg" /> -->
               </div>
               <nuxt-content :class="$style.aboutContent" :document="about" />
               <div :class="$style.aboutBtnWrapper">
-                <v-btn :class="$style.aboutBtn" outlined color="#F7CA18" block large>
+                <v-btn
+                  :class="$style.aboutBtn"
+                  outlined
+                  color="#F7CA18"
+                  block
+                  large
+                  @click="handleOffer"
+                >
                   {{ about.btnText }}
                 </v-btn>
               </div>
@@ -864,6 +873,11 @@ export default {
       titleTemplate: ''
     }
   },
+  computed: {
+    isMobile () {
+      return this.$vuetify.breakpoint.smAndDown
+    }
+  },
   methods: {
     handleInsectClick (insect) {
       console.log('🚀 ~ file: index.vue ~ line 800 ~ handleInsectClick ~ insect', insect)
@@ -995,9 +1009,30 @@ export default {
   margin-top: auto;
 }
 .aboutImageWrapper{
-  min-height: 240px;
+  // min-height: 240px;
   margin-bottom: 24px;
+  // height: 240px;
+  // @include md{
+  //   height: unset;
+  //   padding-top: 56.25%;
+  //   position: relative;
+  // }
 }
+// .aboutImage{
+//   width: 100%;
+//   // max-height: 240px;
+//   height: 100%;
+//   object-fit: cover;
+//   @include md{
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     height: 100%;
+//     max-height: unset;
+//   }
+// }
 
 .aboutContent{
   :global(h3),:global(h4){
