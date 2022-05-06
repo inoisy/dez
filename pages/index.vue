@@ -652,7 +652,7 @@
     <div class="bg-dark block-wrapper cta-wrapper">
       <v-container>
         <v-row>
-          <v-col cols="12">
+          <v-col cols="12" sm="10" md="8">
             <h2 class="cta-heading">
               Остались вопросы? Задайте их дезинфектору
             </h2>
@@ -667,9 +667,9 @@
           <v-col
             cols="12"
             md="4"
-            class="hidden-md-and-down"
+            class="hidden-sm-and-down"
           >
-            <v-img class="cta-hero" src="/hero.png" max-width="33%" />
+            <v-img contain class="cta-hero" src="/hero.png" position="bottom center" />
           </v-col>
         </v-row>
       </v-container>
