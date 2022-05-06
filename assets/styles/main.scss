@@ -1,0 +1,45 @@
+.v-application {
+  font-family: $body-font-family !important;
+}
+:root{
+  --header-height: 90px;
+  @include md {
+    --header-height: 64px;
+  }
+}
+@media (min-width: 1904px) {
+  .container:not(.container--fluid) {
+    max-width: 1185px !important;
+  }
+}
+
+.accent {
+  background-color: $accent !important;
+  border-color: $accent !important;
+}
+.accent--text {
+  color: $accent !important;
+  caret-color: $accent !important;
+}
+.error {
+  border-color: #ff5252!important;
+  background-color: #ff5252!important
+}
+
+.error--text {
+  color: #ff5252!important;
+  caret-color: #ff5252!important
+}
+
+.success {
+  border-color: #4caf50!important;
+  background-color: #4caf50!important
+}
+
+.success--text {
+  color: #4caf50!important;
+  caret-color: #4caf50!important
+}
+.v-main {
+  overflow-x: hidden;
+}
