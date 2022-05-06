@@ -939,6 +939,10 @@ export default {
       margin-bottom: 18px;
       text-transform: uppercase;
       @include md {
+        font-size: 28px;
+        margin-bottom: 18px;
+      }
+      @include sm {
         font-size: 22px;
         margin-bottom: 14px;
       }
@@ -951,6 +955,9 @@ export default {
       color: #FFFFFF;
       text-transform: uppercase;
       @include md {
+        font-size: 18px;
+      }
+      @include sm {
         font-size: 14px;
       }
     }
@@ -1093,6 +1100,9 @@ export default {
   color: #424242;
   @include md{
     font-size: 26px;
+  }
+  @include sm {
+    font-size: 22px;
   }
   &:before,&:after {
     width: 27px;
@@ -1263,6 +1273,9 @@ export default {
   margin-bottom: 18px;
   @include md {
     font-size: 28px;
+  }
+  @include sm {
+    font-size: 24px;
   }
 }
 .cta-subheading {
