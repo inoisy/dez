@@ -710,7 +710,7 @@
             <v-btn text dark class="footer-btn" disabled>
               <SvgIcon name="location" class="footer-icon" />
               <span>
-                Загородное шоссе 1
+                Загородное шоссе 1, к. 2
               </span>
             </v-btn>
           </v-col>

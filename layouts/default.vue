@@ -10,14 +10,13 @@
           <div :class="$style.logoText">
             DEZAES
           </div>
-          https://t.me/evgen_yakutov
         </div> -->
         <div :class="$style.iconWrapper">
           <v-btn icon dark :class="$style.socialBtn" href="https://wa.me/79773409446">
             <SvgIcon name="whatsup" :class="$style.socialIcon" />
           </v-btn>
           <!-- TODO change domain -->
-          <v-btn icon dark :class="$style.socialBtn" href="tg://resolve?domain=evgen_yakutov">
+          <v-btn icon dark :class="$style.socialBtn" href="tg://resolve?domain=DEZAES">
             <SvgIcon name="telegram" :class="$style.socialIcon" />
           </v-btn>
           <v-btn text dark :class="$style.phoneBtn" href="tel:+74956635110">
