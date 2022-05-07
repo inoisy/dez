@@ -48,6 +48,10 @@ export default {
   height: 100%;
   padding-top: calc(var(--benefit-item-wrapper-size) / 2);// #{$iconWrapperSize/2};
   position: relative;
+  @include md {
+    --benefit-item-wrapper-size: 100px;
+    --benefit-item-icon-size: 50px;
+  }
   &.small{
     --benefit-item-wrapper-size: 100px;
     --benefit-item-icon-size: 50px;
@@ -83,6 +87,11 @@ export default {
     color: #424242;
     margin-bottom: 25px;
     margin-top: 22px;
+    @include lg {
+      margin-top: 15px;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
   }
   ::v-deep p{
     font-weight: 400;
@@ -91,6 +100,9 @@ export default {
     text-align: center;
     color: rgba(89, 89, 89, 0.86);
     margin-bottom: 0;
+    @include lg {
+      font-size: 14px;
+    }
   }
   .iconWrapper{
     background: #FFFFFF;

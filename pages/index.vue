@@ -4,9 +4,14 @@
       <v-container fill-height>
         <div :class="$style.mainInner">
           <nuxt-content :class="$style.mainTextWrapper" :document="banner" />
-          <v-btn :class="$style.mainButton" rounded color="#F7CA18" @click="handleOffer">
-            ЗАКАЗАТЬ
-          </v-btn>
+          <div class="banner-buttons-wrapper">
+            <v-btn class="main-button main-button--offer" rounded color="accent" @click="handleOffer">
+              ЗАКАЗАТЬ
+            </v-btn>
+            <v-btn class="main-button main-button--price" rounded color="accent" outlined @click="goTo('#prices')">
+              Цены
+            </v-btn>
+          </div>
         </div>
       </v-container>
     </div>
@@ -133,16 +138,14 @@
             </div>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row justify="center">
           <v-col v-for="step in steps" :key="step.order" cols="12" md="3" sm="6">
             <StepItem :item="step" />
           </v-col>
         </v-row>
       </v-container>
     </div>
-
-    <!-- </v-parallax> -->
-    <div class="bg-white block-wrapper">
+    <div id="prices" class="bg-white block-wrapper">
       <v-container>
         <v-row>
           <v-col cols="12" md="8" class="block-inner">
@@ -502,21 +505,6 @@
                               <td>3800</td>
                               <td>5200</td>
                             </tr>
-                            <!-- <tr>
-                              <td colspan="3">
-                                Коттеджные дома и дачи
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>До 100 м&sup2;</td>
-                              <td>До 250 м&sup2;</td>
-                              <td>До 500 м&sup2;</td>
-                            </tr>
-                            <tr>
-                              <td>4200</td>
-                              <td>6400</td>
-                              <td>8600</td>
-                            </tr> -->
                           </tbody>
                         </template>
                       </v-simple-table>
@@ -686,7 +674,6 @@
     <div class="footer">
       <v-container class="footer-container">
         <v-row class="footer-inner">
-          <!--  cols="12" -->
           <v-col cols="auto">
             <TheLogo class="footer-logo" small />
           </v-col>
@@ -879,13 +866,18 @@ export default {
     }
   },
   methods: {
+    goTo (id) {
+      return this.$vuetify.goTo(id, {
+        offset: this.isMobile ? 64 : 90
+      })
+    },
     handleInsectClick (insect) {
       console.log('🚀 ~ file: index.vue ~ line 800 ~ handleInsectClick ~ insect', insect)
       if (insect.disabled) {
         return
       }
       this.$vuetify.goTo(`#pricesTable${insect.pricesGroup}`, {
-        offset: 120
+        offset: this.isMobile ? 64 : 90
       })
       this.pricesAccordion = insect.pricesGroup
     },
@@ -962,19 +954,7 @@ export default {
       }
     }
   }
-  .mainButton {
-    height: 47px !important;
-    min-width: 78px !important;
-    padding: 0 40px !important;
-    // font-size: 16px !important;
-    border-radius: 9999px !important;
 
-    @include md {
-      height: 40px !important;
-      padding: 0 20px !important;
-      font-size: 12px !important;
-    }
-  }
 }
 
 // .blockInner {
@@ -1016,41 +996,24 @@ export default {
   margin-top: auto;
 }
 .aboutImageWrapper{
-  // min-height: 240px;
   margin-bottom: 24px;
-  // height: 240px;
-  // @include md{
-  //   height: unset;
-  //   padding-top: 56.25%;
-  //   position: relative;
-  // }
 }
-// .aboutImage{
-//   width: 100%;
-//   // max-height: 240px;
-//   height: 100%;
-//   object-fit: cover;
-//   @include md{
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     bottom: 0;
-//     right: 0;
-//     height: 100%;
-//     max-height: unset;
-//   }
-// }
-
 .aboutContent{
   :global(h3),:global(h4){
     margin-bottom: 24px;
     font-weight: 600;
     font-size: 22px;
     color: #424242;
+    @include lg {
+      font-size: 18px;
+    }
   }
   :global(p){
     font-size: 16px;
     color: rgba(89, 89, 89, 0.86);
+    @include lg {
+      font-size: 14px;
+    }
   }
 }
 
@@ -1145,6 +1108,37 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
+.banner-buttons-wrapper{
+
+}
+.main-button {
+  height: 47px !important;
+  min-width: 78px !important;
+  padding: 0 40px !important;
+  // font-size: 16px !important;
+  border-radius: 9999px !important;
+
+  @include md {
+    height: 40px !important;
+    padding: 0 20px !important;
+    font-size: 12px !important;
+  }
+  + .main-button {
+    margin-left: 8px;
+    @include md {
+      margin-left: 5px;
+    }
+  }
+  &--offer{
+    color: black !important;
+  }
+  &--price{
+    padding: 0 30px !important;
+    @include md {
+      padding: 0 20px !important;
+    }
+  }
+}
 .slider-container{
   flex: 1;
 }
@@ -1242,6 +1236,10 @@ export default {
   max-width: 50%;
   padding: 12px;
   @include md{
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  @include sm{
     flex: 0 0 100%;
     max-width: 100%;
   }
