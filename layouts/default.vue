@@ -28,9 +28,26 @@
         </div>
       </v-container>
     </div>
-    <v-main :class="$style.mainContent">
+    <v-main v-scroll="onScroll" :class="$style.mainContent">
       <Nuxt />
+      <v-fab-transition>
+        <v-btn
+          v-show="isShowFloatingBtn"
+          color="white"
+          dark
+          fixed
+          bottom
+          right
+          fab
+          @click="goTo('#__nuxt')"
+        >
+          <v-icon color="black">
+            mdi-arrow-up
+          </v-icon>
+        </v-btn>
+      </v-fab-transition>
     </v-main>
+
     <!-- <TheModal /> -->
   </v-app>
 </template>
@@ -40,6 +57,27 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
+      scrollTop: 0
+    }
+  },
+  computed: {
+    isShowFloatingBtn () {
+      return this.scrollTop > 100
+    },
+    isMobile () {
+      return this.$vuetify.breakpoint.smAndDown
+    }
+  },
+  methods: {
+    goTo (id) {
+      return this.$vuetify.goTo(id, {
+        offset: this.isMobile ? 64 : 90
+      })
+    },
+    onScroll () {
+      // const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      // console.log('🚀 ~ file: default.vue ~ line 49 ~ onScroll ~ scrollTop', scrollTop)
+      this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
     }
   }
 }

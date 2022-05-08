@@ -1,10 +1,11 @@
 // import colors from 'vuetify/es5/util/colors'
-
+const siteUrl = process.env.SITE_URL || 'https://dezaes.ru'
+const companyName = 'Dezaes'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - Dezaes',
-    title: 'Dezaes',
+    title: companyName,
     htmlAttrs: {
       lang: 'ru'
     },
@@ -14,7 +15,9 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#da532c' },
-      { name: 'theme-color', content: '#ffffff' }
+      { name: 'theme-color', content: '#ffffff' },
+      { property: 'og:image:width', content: '740' },
+      { property: 'og:image:height', content: '300' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
@@ -77,9 +80,43 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    '@nuxtjs/svg-sprite'
+    '@nuxtjs/svg-sprite',
+    '@nuxtjs/robots',
+    '@nuxtjs/yandex-metrika',
+    '@nuxtjs/sitemap',
+    [
+      'nuxt-social-meta',
+      {
+        url: siteUrl,
+        title: companyName,
+        // site_name: "Site name",
+        // description: "Site description",
+        img: '/social.jpg',
+        img_size: { width: '600', height: '400' },
+        locale: 'ru_RU',
+        // twitter: "@user",
+        // twitter_card: "summary_large_image",
+        theme_color: '#151317'
+      }
+    ]
   ],
-
+  sitemap: {
+    hostname: siteUrl,
+    gzip: true
+  },
+  yandexMetrika: {
+    id: '88731644',
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    webvisor: true,
+    useCDN: false
+  },
+  robots: {
+    UserAgent: '*',
+    Allow: '/',
+    Sitemap: siteUrl + '/sitemap.xml'
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

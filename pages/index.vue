@@ -32,9 +32,6 @@
             <div :class="$style.aboutWrapper">
               <div :class="$style.aboutImageWrapper">
                 <v-img :class="$style.aboutImage" src="/hero1.jpg" alt="Дезинсектор" :aspect-ratio="14/9" />
-                <!--isMobile <img :class="$style.aboutImage" src="/hero1.jpg" alt="Дезинсектор"> -->
-                <!-- <v-img :class="$style.aboutImage" class="hidden-lg-and-up" :aspect-ratio="14/9" src="/hero1.jpg" />
-                <v-img :class="$style.aboutImage" class="hidden-md-and-down" max-height="240px" src="/hero1.jpg" /> -->
               </div>
               <nuxt-content :class="$style.aboutContent" :document="about" />
               <div :class="$style.aboutBtnWrapper">
@@ -657,8 +654,8 @@
               Специалист поможет рассчитать стоимость, ответит на вопросы<br>
               и оформит заявку на обработку.
             </div>
-            <v-btn rounded color="#F7CA18" large @click="handleOffer">
-              заявка
+            <v-btn rounded color="#F7CA18" large @click="handleQuestion">
+              задать вопрос
             </v-btn>
           </v-col>
           <v-col
@@ -709,7 +706,7 @@
         </v-row>
       </v-container>
     </div>
-    <DefaultDialog v-model="isModalShow" />
+    <DefaultDialog v-model="isModalShow" :is-message="isModalMessage" />
   </div>
 </template>
 
@@ -731,6 +728,7 @@ export default {
   data () {
     return {
       isModalShow: false,
+      isModalMessage: false,
       pricesAccordion: undefined,
       activeSlide: 0,
       steps: [
@@ -872,7 +870,7 @@ export default {
       })
     },
     handleInsectClick (insect) {
-      console.log('🚀 ~ file: index.vue ~ line 800 ~ handleInsectClick ~ insect', insect)
+      // console.log('🚀 ~ file: index.vue ~ line 800 ~ handleInsectClick ~ insect', insect)
       if (insect.disabled) {
         return
       }
@@ -882,6 +880,7 @@ export default {
       this.pricesAccordion = insect.pricesGroup
     },
     handleOffer () {
+      this.isModalMessage = false
       this.isModalShow = true
       // return this.$modal.open({
       //   component: 'DefaultDialog'
@@ -889,6 +888,10 @@ export default {
       // this.$store.dispatch('showDialog', {
       //     isShow: true,
       // });
+    },
+    handleQuestion () {
+      this.isModalShow = true
+      this.isModalMessage = true
     }
   }
 }

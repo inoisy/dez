@@ -27,6 +27,7 @@
           v-text="productName ? `Заказать услугу «${productName}»` : 'Форма обратной связи'"
         />
         <div
+          v-if="!isMessage"
           :class="$style.subheader"
           class="mb-8"
         >
@@ -60,12 +61,13 @@
             required
             :error-messages="emailErrors"
             @blur="$v.email.$touch()"
-          />
+          />-->
           <VTextField
+            v-if="isMessage"
             v-model="message"
             :class="$style.input"
-            label="Комментарий"
-          /> -->
+            label="Сообщение"
+          />
 
           <v-flex xs12>
             <v-btn
@@ -153,6 +155,10 @@ export default {
     productName: {
       type: String,
       default: ''
+    },
+    isMessage: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -237,6 +243,7 @@ export default {
       this.$v.$reset()
       this.phone = ''
       this.name = ''
+      this.message = ''
       // this.email = ''
     },
     async submit () {
@@ -248,7 +255,8 @@ export default {
       try {
         const response = await this.$axios.$post(`${location.origin}/server-middleware/getJSON`, {
           name: this.name,
-          phone: this.phone
+          phone: this.phone,
+          message: this.message
         })
 
         if (response.error || !response.data.ok) {
@@ -274,7 +282,7 @@ export default {
       } catch (error) {
         this.loading = false
         this.formError = true
-        console.log('🚀 ~ file: DefaultDialog.vue ~ line 361 ~ .then ~ error', error)
+        console.error('🚀 ~ file: DefaultDialog.vue ~ line 361 ~ .then ~ error', error)
         this.clear()
       }
     }
