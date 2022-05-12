@@ -917,6 +917,7 @@ export default {
   .mainTextWrapper{
     margin-bottom: 48px;
     color: white;
+    max-width: 900px;
     :global(.nuxt-content-editor){
       color: white;
     }

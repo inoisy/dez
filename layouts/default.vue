@@ -5,17 +5,10 @@
     >
       <v-container fill-height :class="$style.headerContainer">
         <TheLogo />
-        <!-- <div :class="$style.logoWrapper">
-          <SvgIcon name="logo" :class="$style.logoImg" />
-          <div :class="$style.logoText">
-            DEZAES
-          </div>
-        </div> -->
         <div :class="$style.iconWrapper">
-          <v-btn icon dark :class="$style.socialBtn" href="https://wa.me/79773409446">
+          <v-btn icon dark :class="$style.socialBtn" href="https://wa.me/79360045064">
             <SvgIcon name="whatsup" :class="$style.socialIcon" />
           </v-btn>
-          <!-- TODO change domain -->
           <v-btn icon dark :class="$style.socialBtn" href="tg://resolve?domain=DEZAES">
             <SvgIcon name="telegram" :class="$style.socialIcon" />
           </v-btn>

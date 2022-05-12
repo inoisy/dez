@@ -1,6 +1,7 @@
 // import colors from 'vuetify/es5/util/colors'
 const siteUrl = process.env.SITE_URL || 'https://dezaes.ru'
 const companyName = 'Dezaes'
+const companyDescription = 'Уничтожение тараканов, клопов, клещей и комаров в Москве и МО. Официальная СЭС. Гарантия до 1 года по договору. Льготы.'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -12,7 +13,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: companyDescription },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#da532c' },
       { name: 'theme-color', content: '#ffffff' },
@@ -20,7 +21,7 @@ export default {
       { property: 'og:image:height', content: '300' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon/favicon.svg' },
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
@@ -90,7 +91,7 @@ export default {
         url: siteUrl,
         title: companyName,
         // site_name: "Site name",
-        // description: "Site description",
+        description: companyDescription,
         img: '/social.jpg',
         img_size: { width: '600', height: '400' },
         locale: 'ru_RU',
