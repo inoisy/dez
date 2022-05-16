@@ -266,13 +266,15 @@ export default {
         this.loading = false
         this.formSuccess = true
         this.clear()
-        // if (
-        //   this.$config.yandexMetrikaID &&
-        //   window[`yaCounter${this.$config.yandexMetrikaID}`]
-        // ) {
-        //   console.log('order')
-        //   window[`yaCounter${this.$config.yandexMetrikaID}`].reachGoal('order')
-        // }
+        if (
+          // this.$config.yandexMetrikaID &&
+          // window[`yaCounter${this.$config.yandexMetrikaID}`]
+          window.yaCounter88731644
+        ) {
+          // console.log('order')
+          // window[`yaCounter${this.$config.yandexMetrikaID}`].reachGoal('lead')
+          window.yaCounter88731644.reachGoal('lead')
+        }
         // this.$ga.event({
         //   eventCategory: 'order',
         //   eventAction: 'orderAction',
