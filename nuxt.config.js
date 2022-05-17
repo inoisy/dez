@@ -48,10 +48,10 @@ export default {
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap' }
-    ],
-    script: [
-      { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js' }
     ]
+    // script: [
+    //   { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js' }
+    // ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
